@@ -1,0 +1,40 @@
+// const http=require("http")
+// const server=http.createServer()
+// server.on('request',(req,res)=>{
+//   const str=`Your request url is ${req.url} and the method is ${req.method}`
+//   const str1=`Your server url is ${res.url} and the method is ${res.method}`
+//   console.log(str)
+//   console.log(str1)
+//   res.end(str1)
+// })
+// server.listen(80,()=>{
+//   console.log('http server running at the http://127.0.0.1')
+// })
+// const http=require("http")
+// const server=http.createServer()
+// server.on('request',(req,res)=>{
+//   const str=`你请求的url is ${req.url} 请求的 method is ${req.method}`
+//   res.setHeader('Content-Type','text/html;charset=utf-8')
+//   res.end(str)
+// })
+// server.listen(80,()=>{
+//   console.log('http server running at the http://127.0.0.1')
+// })
+const http=require("http")
+const server=http.createServer()
+server.on('request',(req,res)=>{
+  const url=req.url
+  let Content='<h1>404 Not found</h1>'
+  if(url=='/'||url==='/index.html'){
+    Content='<h1>首页</h1>'
+  }else if(url==='/about.html'){
+    Content='<h1>关于</h1>'
+  }else{
+    Content=Content
+  }
+  res.setHeader('Content-Type','text/html;charset=utf-8')
+  res.end(Content)
+})
+server.listen(80,()=>{
+  console.log('http server running at the http://127.0.0.1')
+})
